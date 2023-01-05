@@ -1,0 +1,49 @@
+
+variable "ami_id" {
+    type = map
+    default = {
+        "linux": "ami-xxxxxxxx",
+        "ubuntu": "ami-xxxxxxxx",
+        "centos": "ami-xxxxxxxx",
+        "redhat": "ami-xxxxxxxx"
+    }
+}
+
+
+
+variable "env" {}
+
+variable "owner" {}
+
+variable "subnetcidrPri-Az1" {}
+variable "subnetcidrPub-Az2" {}
+variable "subnetcidrPri-Az2" {}
+
+
+resource "aws_subnet" "main-subnet" {
+  vpc_id     = aws_vpc.main-vpc.id
+  cidr_block = var.subnetcidrPub-Az2
+
+  tags = {
+    Name = "Main"
+  }
+}
+
+
+resource "aws_subnet" "main-subnet" {
+  vpc_id     = aws_vpc.main-vpc.id
+  cidr_block = var.subnetcidrPub-Az1
+
+  tags = {
+    Name = "Main"
+  }
+}
+
+resource "aws_subnet" "main-subnet" {
+  vpc_id     = aws_vpc.main-vpc.id
+  cidr_block = var.subnetcidrPri-Az2
+
+  tags = {
+    Name = "Main"
+  }
+}
